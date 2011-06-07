@@ -202,3 +202,7 @@ plot.pfa <- function(   result,
 }
 
 
+printf <- function(fmt, ...)
+{
+  cat(sprintf(fmt, ...))
+}
