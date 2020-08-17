@@ -6,7 +6,7 @@ library(ggthemes)
 
 duration <- 7
 
-chiba <- st_read("https://www.dropbox.com/s/4310z8hktjijzol/chiba_admin.geojson?dl=1")
+chiba <- st_read("https://raw.githubusercontent.com/fusion0202/RScript/master/chiba_admin.geojson")
 url <- getURL("https://raw.githubusercontent.com/fusion0202/RScript/master/covid_chiba_rev.csv")
 df <- read.csv(text = url, check.names = FALSE)
 
