@@ -15,9 +15,6 @@ sDate <- as.character(as.Date(cDate) - Days)
 
 df %>% select(sichoson, all_of(cDate), all_of(pDate), all_of(sDate)) %>% 
   rename(Today = all_of(cDate), Yesterday = all_of(pDate), Begin = all_of(sDate)) %>% 
-  mutate(Today = replace(Today, is.na(Today), 0),
-         Yesterday = replace(Yesterday, is.na(Yesterday), 0),
-         Begin = replace(Begin, is.na(Begin), 0)) %>%
   mutate(total = Today - Begin, new = Today - Yesterday) %>%
   mutate(total = replace(total, total == 0, NA),
          new = replace(new, new == 0, NA)) %>% 
