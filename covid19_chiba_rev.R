@@ -3,17 +3,17 @@ library(dplyr)
 library(ggplot2)
 library(ggthemes)
 
-duration <- 7
+Days <- 7
 
 chiba <- st_read("https://raw.githubusercontent.com/fusion0202/RScript/master/chiba_admin.geojson")
 df <- read.csv("https://raw.githubusercontent.com/fusion0202/RScript/master/covid_chiba_rev.csv", check.names = FALSE)
 
 cDate <- tail(colnames(df), 1)
 pDate <- tail(colnames(df), 2)[1]
-sDate <- as.character(as.Date(cDate) - duration + 1)
+sDate <- as.character(as.Date(cDate) - Days + 1)
 
-df %>% select(sichoson, cDate, pDate, sDate) %>% 
-  rename(Today = cDate, Yesterday = pDate, Begin = sDate) %>% 
+df %>% select(sichoson, all_of(cDate), all_of(pDate), all_of(sDate)) %>% 
+  rename(Today = all_of(cDate), Yesterday = all_of(pDate), Begin = all_of(sDate)) %>% 
   mutate(Today = replace(Today, is.na(Today), 0),
          Yesterday = replace(Yesterday, is.na(Yesterday), 0),
          Begin = replace(Begin, is.na(Begin), 0)) %>%
