@@ -25,15 +25,15 @@ datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 8),
                 seq(as.Date("2020-02-15"), by = "month", length.out = 8))
 
 g <- ggplot(data = df)
-g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend=test),
+g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend = test),
                       color = "lightblue", size = 1.5)
-g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend=posi),
-                      color = "darkblue", size = 1.5, alpha=0.3)
-g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha= 0.8)
+g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend = posi),
+                      color = "darkblue", size = 1.5, alpha = 0.3)
+g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha = 0.8)
 g <- g + theme_light()
 g <- g + scale_y_continuous(
         limits = c(0, 1200), breaks = seq(0, 1200, by = 200),
-        sec.axis = sec_axis(trans=~.* 0.0125, name = "% positive"))
+        sec.axis = sec_axis(trans = ~.* 0.0125, name = "% positive"))
 g <- g + scale_x_date(breaks = datebreaks, labels = date_format("%m/%d")) 
 g <- g + labs(title = mtitle,
               x = "Day", 
