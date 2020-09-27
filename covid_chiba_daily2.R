@@ -9,7 +9,7 @@ test <- as.numeric(d[-c(1, 2), 5])
 posi <- as.numeric(d[-c(1, 2), 3])
 
 rate <- posi / test
-rate[is.nan(rate)==T] <- 0
+rate[is.nan(rate) == T] <- 0
 
 day <- seq(as.Date("2020-01-25"), by = "day", length.out = length(test))
 
@@ -33,8 +33,8 @@ g <- g + geom_line(aes(x = day, y = rate), size = 0.1)
 g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha = 0.8)
 g <- g + theme_light()
 g <- g + scale_y_continuous(
-        limits = c(0, 1200), breaks = seq(0, 1200, by = 200),
-        sec.axis = sec_axis(trans=~. * 0.0125, name = "% positive"))
+        limits = c(0, 1400), breaks = seq(0, 1400, by = 200),
+        sec.axis = sec_axis(trans = ~. * 0.0125, name = "% positive"))
 g <- g + scale_x_date(breaks = datebreaks, labels = date_format("%m/%d")) 
 g <- g + labs(title = mtitle,
               x = "Day", 
