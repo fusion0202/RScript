@@ -22,7 +22,7 @@ df <- data.frame(day, test, posi, trd, rate)
 
 mtitle <- paste0('Chiba, daily from ', df$day[1], ' to ', df$day[nrow(df)])
 datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 9),
-                seq(as.Date("2020-02-15"), by = "month", length.out = 8))
+                seq(as.Date("2020-02-15"), by = "month", length.out = 9))
 
 g <- ggplot(data = df)
 g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend = test),
