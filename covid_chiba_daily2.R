@@ -33,7 +33,7 @@ g <- g + geom_line(aes(x = day, y = rate), size = 0.1)
 g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha = 0.8)
 g <- g + theme_light()
 g <- g + scale_y_continuous(
-        limits = c(0, 1500), breaks = seq(0, 1500, by = 200),
+        limits = c(0, 1600), breaks = seq(0, 1600, by = 200),
         sec.axis = sec_axis(trans = ~. * 0.0125, name = "% positive"))
 g <- g + scale_x_date(breaks = datebreaks, labels = date_format("%m/%d")) 
 g <- g + labs(title = mtitle,
