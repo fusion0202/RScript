@@ -16,7 +16,7 @@ dat <- list(N = N, y = y)
 fit <- stan('https://raw.githubusercontent.com/fusion0202/RScript/master/covid19_chiba_2nd_trend.stan', 
             data = dat, iter = 1000, chains = 4)
 
-fit.smp<-extract(fit)
+fit.smp <- extract(fit)
 trend <- rep(0, N)
 for (i in 1:N) {
         tmp <- density(fit.smp$trend[, i])
