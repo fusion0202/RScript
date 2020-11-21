@@ -32,9 +32,9 @@ datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 10),
                 seq(as.Date("2020-02-15"), by = "month", length.out = 10))
 
 g <- ggplot(data = df)
-g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend=rep),
+g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend = rep),
                       color = "lightblue", size = 1.5)
-g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha= 0.8)
+g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.0, alpha = 0.8)
 g <- g + theme_light()
 g <- g + scale_x_date(breaks = datebreaks, labels = date_format("%m/%d")) 
 g <- g + labs(title = mtitle,
