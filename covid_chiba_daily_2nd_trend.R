@@ -7,6 +7,7 @@ library(rstan)
 url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/chiba_corona_data.xlsx"
 d <- read.xlsx(url)
 rep <- as.numeric(d[-c(1, 2), 5])
+# rep[length(rep) + 1] <- 
 day <- seq(as.Date("2020-01-30"), by = "day", length.out = length(rep))
 
 
@@ -28,7 +29,7 @@ trd <- cumsum(trend)
 df <- data.frame(day, rep, trd)
 
 mtitle <- paste0('Chiba, daily from ', df$day[1], ' to ', df$day[nrow(df)])
-datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 10),
+datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 11),
                 seq(as.Date("2020-02-15"), by = "month", length.out = 10))
 
 g <- ggplot(data = df)
