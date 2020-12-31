@@ -29,8 +29,8 @@ trd <- cumsum(trend)
 df <- data.frame(day, rep, trd)
 
 mtitle <- paste0('Chiba, daily from ', df$day[1], ' to ', df$day[nrow(df)])
-datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 11),
-                seq(as.Date("2020-02-15"), by = "month", length.out = 10))
+datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 12),
+                seq(as.Date("2020-02-15"), by = "month", length.out = 11))
 
 g <- ggplot(data = df)
 g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend = rep),
