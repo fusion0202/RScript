@@ -6,8 +6,7 @@ library(ggplot2)
 library(ggthemes)
 library(scales)
 
-#URL <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/1214kansensya.pdf"
-URL <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/1215kansensya.pdf"
+URL <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0110kansensya.pdf"
 
 tabulizer::extract_tables(URL) %>%
   purrr::map_dfr(as.data.frame) -> df
@@ -21,6 +20,14 @@ df %>%
   mutate(V6 = str_replace(V6, "月", "-")) %>%
   mutate(V6 = paste0("2020-", V6)) %>%
   mutate(V6 = as.Date(V6)) -> df2
+
+for(i in 1:length(df2$V1)){
+  if (i > 9400){
+    if (substr(df2$V6[i],6,7) < "12"){
+      df2$V6[i] <- str_replace(df2$V6[i],"2020","2021")
+    }
+  }
+}
 
 od <- as.data.frame(table(df2$V6))
 colnames(od) <- c("Date", "Cases")
