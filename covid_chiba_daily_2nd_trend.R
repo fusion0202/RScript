@@ -4,7 +4,7 @@ library(scales)
 library(openxlsx)
 library(rstan)
 
-url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/chiba_corona_data.xlsx"
+url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0220chiba_corona_data.xlsx"
 d <- read.xlsx(url)
 rep <- as.numeric(d[-c(1, 2), 5])
 # rep[length(rep) + 1] <- 
