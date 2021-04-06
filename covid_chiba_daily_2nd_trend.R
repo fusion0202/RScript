@@ -14,7 +14,7 @@ day <- seq(as.Date("2020-01-30"), by = "day", length.out = length(rep))
 N <- length(day)
 y <- rep
 dat <- list(N = N, y = y)
-fit <- stan('~/data/covid19_chiba_2nd_trend.stan', 
+fit <- stan('https://raw.githubusercontent.com/fusion0202/RScript/master/covid19_chiba_2nd_trend.stan', 
             data = dat, iter = 1000, chains = 4)
 
 fit.smp<-extract(fit)
