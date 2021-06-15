@@ -4,10 +4,10 @@ library(scales)
 library(openxlsx)
 library(rstan)
 
-url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0405chiba_corona_data.xlsx"
+url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0614chibacoronadata.xlsx"
 d <- read.xlsx(url)
 rep <- as.numeric(d[-c(1, 2), 5])
-rep[length(rep) + 1] <-  
+rep[length(rep) + 1] <- 87 
 day <- seq(as.Date("2020-01-30"), by = "day", length.out = length(rep))
 
 
@@ -33,8 +33,8 @@ datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 16))
 
 g <- ggplot(data = df)
 g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend=rep),
-                      color = "lightblue", size = 1.1)
-g <- g + geom_line(aes(x = day, y = trd), color = "darkorange", size = 1.2, alpha= 0.9)
+                      color = "blue", size = 1.1, alpha=0.2)
+g <- g + geom_line(aes(x = day, y = trd), color = "brown", size = 1.2, alpha= 0.8)
 g <- g + theme_light()
 g <- g + scale_x_date(breaks = datebreaks, labels = date_format("%m/%d")) 
 g <- g + labs(title = mtitle,
