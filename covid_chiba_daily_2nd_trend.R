@@ -4,10 +4,10 @@ library(scales)
 library(openxlsx)
 library(rstan)
 
-url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0627chibacoronadata.xlsx"
+url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0702chibacoronadata.xlsx"
 d <- read.xlsx(url)
 rep <- as.numeric(d[-c(1, 2), 5])
-rep[length(rep) + 1] <- 121
+rep[length(rep) + 1] <- 157
 day <- seq(as.Date("2020-01-30"), by = "day", length.out = length(rep))
 
 
@@ -29,7 +29,7 @@ trd <- cumsum(trend)
 df <- data.frame(day, rep, trd)
 
 mtitle <- paste0('Chiba, daily from ', df$day[1], ' to ', df$day[nrow(df)])
-datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 17))
+datebreaks <- c(seq(as.Date("2020-02-01"), by = "month", length.out = 18))
 
 g <- ggplot(data = df)
 g <- g + geom_segment(aes(x = day, y = 0, xend = day, yend=rep),
