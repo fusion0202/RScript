@@ -22,6 +22,11 @@ df %>% select(sichoson, all_of(cDate), all_of(pDate), all_of(sDate)) %>%
          new = replace(new, new == 0, NA)) %>% 
   select(sichoson, new, total) -> dt
 
+pf <- read.csv("https://raw.githubusercontent.com/fusion0202/RScript/master/chiba_pop_20210501.csv", 
+               check.names = FALSE)
+pop <- pf[-(2:7), c(1,2)]
+dt$total2 <- round(dt$total * 100000 / pop$T, digits = 0)
+
 map <- left_join(chiba, dt, by = c("SIKUCHOSON" = "sichoson"))
 cap <- "Data Source: https://github.com/fusion0202/RScript/blob/master/covid_chiba_rev.csv"
 
@@ -45,6 +50,19 @@ ggplot(data = map) +
   scale_fill_gradient(low = "#fef9f9", high = "#cd0505", 
                       na.value = "white", name = "No. of Cases") +
   geom_sf_text(aes(label = total)) +
+  theme_map() +
+  theme(legend.position = c(0.80, 0.05)) +
+  labs(title = "COVID-19 Cases in Chiba",
+       subtitle = paste("from ", sDate, " to ", cDate),
+       caption = cap)
+
+
+ggplot(data = map) +
+  geom_sf(aes(fill = total2),
+          alpha = 0.8, colour = 'grey5', size = 0.1) +
+  scale_fill_gradient(low = "#fef9f9", high = "#cd0505", 
+                      na.value = "white", name = "per 100,000") +
+  geom_sf_text(aes(label = total2)) +
   theme_map() +
   theme(legend.position = c(0.80, 0.05)) +
   labs(title = "COVID-19 Cases in Chiba",
