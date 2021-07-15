@@ -4,10 +4,10 @@ library(scales)
 library(openxlsx)
 library(rstan)
 
-url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0709chibacoronadata.xlsx"
+url <- "https://www.pref.chiba.lg.jp/shippei/press/2019/documents/0714chibacoronadata.xlsx"
 d <- read.xlsx(url)
 rep <- as.numeric(d[-c(1, 2), 5])
-rep[length(rep) + 1] <- 204
+rep[length(rep) + 1] <- 253
 day <- seq(as.Date("2020-01-30"), by = "day", length.out = length(rep))
 
 
