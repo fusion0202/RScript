@@ -6,7 +6,7 @@ library(ggthemes)
 Days <- 7
 
 chiba <- st_read("https://raw.githubusercontent.com/fusion0202/RScript/master/chiba_admin.geojson")
-df <- read.csv("https://raw.githubusercontent.com/fusion0202/RScript/master/covid_chiba_rev.csv", check.names = FALSE)
+df <- read.csv("https://raw.githubusercontent.com/fusion0202/RScript/master/covid_chiba_rev_2.csv", check.names = FALSE)
 
 cDate <- tail(colnames(df), 1)
 pDate <- tail(colnames(df), 2)[1]
